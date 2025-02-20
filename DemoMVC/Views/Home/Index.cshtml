@@ -6,3 +6,13 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<form asp-action="Index">
+    <label> Nhap Home ten: </label>
+    <input type="text" name="FullName">
+    <label> Nhap dia chi: </label>
+    <input type="text" name="Address">
+    <button type="submit" value="Gửi">Gửi</button>
+</form>
+
+<h1>@ViewBag.Messega</h1>
