@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\PTPMQL\DemoMVC
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/PTPMQL/DemoMVC/Views/BMI/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQk1JXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/PTPMQL/DemoMVC/Views/Employee/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -28,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/PTPMQL/DemoMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PTPMQL/DemoMVC/Views/Invoice/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/PTPMQL/DemoMVC/Views/Person/index.cshtml]
@@ -44,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/PTPMQL/DemoMVC/Views/student/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc3R1ZGVudFxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/PTPMQL/DemoMVC/Views/SubjectScore/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFNjb3JlXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/PTPMQL/DemoMVC/Views/_ViewImports.cshtml]
