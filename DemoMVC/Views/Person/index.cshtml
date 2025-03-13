@@ -1,23 +1,39 @@
+
+@model IEnumerable<MvcMovie.Models.Person>
+
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Danh sách Person";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Xin chao</h1>
-    <p>2121051327<a href="https://learn.microsoft.com/aspnet/core"> Pham Anh Duc </a>.</p>
-</div>
+<h1>Danh sách Person</h1>
 
+<p>
+    <a asp-action="Create">Tạo mới</a>
+</p>
 
-<form asp-action="index"> 
-    <label>nhap Person ID</label>
-    <input type="text" name="PersonID">
-    <label>nhap ho ten:</label>
-    <input type="text" name="Full name">
-    <label>nhap dia chi:</label>
-    <input type="text" name="Address">
-    <button type="submit" value="Gửi">Gửi</button>
-
- 
-</form>
-
-<h1>@ViewBag.Message</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PersonId)</th>
+            <th>@Html.DisplayNameFor(model => model.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.Address)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.PersonId)</td>
+                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonId">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PersonId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
