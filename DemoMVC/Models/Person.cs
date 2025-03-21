@@ -1,9 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using MvcMovie.Models.Process;
 
 namespace MvcMovie.Models
 {
+
 public class Person
     {
         internal string? PersonID;

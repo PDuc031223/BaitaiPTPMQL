@@ -1,8 +1,10 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
+using MvcMovie.Models.Process;
 
 namespace MvcMovie.Controllers
 {
@@ -11,6 +13,7 @@ namespace MvcMovie.Controllers
     {
 
         private readonly ApplicationDbContext _context = context;
+        private ExcelProcess _excelProcess = new ExcelProcess();
 
         public async Task<IActionResult> Index()
         {
@@ -114,5 +117,54 @@ namespace MvcMovie.Controllers
         {
             return (_context.Persons?.Any(e => e.PersonId == id)).GetValueOrDefault();
         }
+    
+     public async Task<IActionResult> Upload()
+    {
+        return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Upload(IFormFile file)
+    {
+        if (file!=null)
+        {
+            string fileExtension = Path.GetExtension(file.FileName);
+            if (fileExtension !=".xlx" && fileExtension != ".xlsx")
+            {
+                ModelState.AddModelError("","Please choose excel file to upload!");
+            }
+            else 
+            {
+                var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
+                var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Upload/Excel", fileName);
+                var filelocation = new FileInfo(filePath).ToString();
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                    var dt = _excelProcess.ExcelToDataTable(filelocation);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                       var ps = new Person();
+                       ps.PersonId = dt.Rows[i][0].ToString();
+                       ps.FullName = dt.Rows[i][1].ToString();
+                       ps.Address  = dt.Rows[i][2].ToString();
+                       _context.Add(ps);
+                        
+                    }
+                    await _context.SaveChangesAsync();
+                    return RediRectToAction(nameof(Index));
+                }
+            }
+        }
+        return View();
+    }
+
+        private IActionResult RediRectToAction(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
+    
+       
